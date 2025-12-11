@@ -1,0 +1,48 @@
+html {
+    scroll-behavior: smooth;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #071623;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+
+
+}
+
+header {
+    background-color: #0d2435;
+    width: 100%;
+
+
+}
+
+.imgheader {
+    width: 350px;
+    height: 120px;
+    padding-left: 50px;
+}
+
+h1 {
+    color: white;
+    font-family: cursive;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 65px;
+}
+
+.head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1440px;
+}
