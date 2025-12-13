@@ -16,7 +16,7 @@ let images = [
 let gallery = document.getElementById("gallery");
 
 images.forEach((src) => {
-  const img = document.createElement("img");
+  let img = document.createElement("img");
   img.src = src;
   img.classList.add("thumbnail");
   gallery.appendChild(img);
