@@ -16,11 +16,12 @@ body {
 
 
 }
+
 header {
     background-color: #09212A;
     width: 100%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .header-content {
@@ -54,13 +55,41 @@ h1 {
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-width: 1440px;
     width: 100%;
-
 }
 
+#gallery {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
 
+    display: grid;
+    grid-template-columns: repeat(6, 150px); 
+    gap: 24px;                              
+
+    justify-content: center; 
+}
+
+.gallery-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
+
+.thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+
+}
