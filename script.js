@@ -15,9 +15,40 @@ let images = [
 
 let gallery = document.getElementById("gallery");
 
-images.forEach((src) => {
-  let img = document.createElement("img");
-  img.src = src;
-  img.classList.add("thumbnail");
-  gallery.appendChild(img);
-});
+
+
+function imageTemplate(src) {
+  return `
+    <img 
+      src="${src}" 
+      class="thumbnail"
+      onclick="openDialog('${src}')"
+      alt="Gallery image"
+    >
+  `;
+}
+
+
+function loadImages() {
+  gallery.innerHTML = ""; 
+
+  for (let i = 0; i < images.length; i++) {
+    gallery.innerHTML += imageTemplate(images[i]);
+  }
+}
+
+loadImages();
+
+
+function openDialog(src) {
+  let dialog = document.getElementById("dialog");
+  let dialogImage = document.getElementById("dialogImage");
+
+  dialogImage.src = src;
+  dialog.classList.remove("d-none");
+}
+
+
+function closeDialog() {
+  document.getElementById("dialog").classList.add("d-none");
+}
