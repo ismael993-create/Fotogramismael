@@ -196,6 +196,12 @@ main {
         font-size: 40px;
         margin: 30px;
     }
+
+    .dialog_box {
+        width: 340px;
+        height: 650px;
+        
+    }
 }
 
 @media (max-width: 600px) {
