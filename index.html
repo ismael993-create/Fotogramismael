@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fotogram</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="icon" href="./img/favicon.png" type="image/png" />
   </head>
   <body>
@@ -26,20 +29,25 @@
       <h1>Your personal photo album</h1>
     </head>
 
-   <main>
-  <section id="gallery" class="gallery-container"></section>
-</main>
-    <script src="script.js"></script>
+    <main>
+      <section id="gallery" class="gallery-container"></section>
+    </main>
+   <div id="dialog" class="dialog d-none" onclick="closeDialog()">
+  <div class="dialog_box">
+    <img id="dialogImage" />
+  </div>
+</div>
 
     <footer class="footer_end">
- <div class="footer-content">
-    <img src="./img/Logo.svg" alt="Developer Logo" />
-    <img src="./img/© 2023 Developer Akademie GmbH.svg" alt="Developer Akademie" />
-  </div>
-
+      <div class="footer-content">
+        <img src="./img/Logo.svg" alt="Developer Logo" />
+        <img
+          src="./img/© 2023 Developer Akademie GmbH.svg"
+          alt="Developer Akademie"
+        />
+      </div>
     </footer>
-    <div id="dialog" class="dialog d-none" onclick="closeDialog()">
-  <img id="dialogImage" />
-</div>
+
+    <script src="script.js"></script>
   </body>
 </html>

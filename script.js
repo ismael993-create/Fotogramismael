@@ -49,6 +49,7 @@ function openDialog(src) {
 }
 
 
+
 function closeDialog() {
   document.getElementById("dialog").classList.add("d-none");
 }
