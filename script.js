@@ -24,6 +24,7 @@ function imageTemplate(src) {
       class="thumbnail"
       onclick="openDialog('${src}')"
       alt="Ausgewähltes Bild"
+      tabindex="0"
     >
   `;
 }
@@ -75,10 +76,17 @@ function prevImage() {
 
 
 document.addEventListener("keydown", (e) => {
-  let dialog = document.getElementById("dialog");
-  if (dialog.classList.contains("d-none")) return;
+  const dialog = document.getElementById("dialog");
 
-  if (e.key === "ArrowRight") nextImage();
-  if (e.key === "ArrowLeft") prevImage();
-  if (e.key === "Escape") closeDialog();
+ 
+  if (!dialog.classList.contains("d-none")) {
+    if (e.key === "ArrowRight") nextImage();
+    if (e.key === "ArrowLeft") prevImage();
+    if (e.key === "Escape") closeDialog();
+    return;
+  }
+
+  if (e.key === "Enter") {
+    openDialog(images[currentIndex]);
+  }
 });
