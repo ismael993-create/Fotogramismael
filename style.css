@@ -1,6 +1,6 @@
 html {
     scroll-behavior: smooth;
-overflow: hidden;
+
 }
 
 body {
@@ -162,6 +162,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 1;
+    
    
     
 }
@@ -235,6 +236,7 @@ main {
     align-items: center;
     overflow: hidden;
     position: relative;
+    overflow-x: hidden;
 }
 
 #dialogImage {

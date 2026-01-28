@@ -43,10 +43,16 @@ function openDialog(src) {
   currentIndex = images.indexOf(src);
   updateDialog();
   document.getElementById("dialog").classList.remove("d-none");
+  document.body.style.overflow = "hidden";
+  document.querySelector(".nav-btn").focus();
+  
 }
 
 function closeDialog() {
   document.getElementById("dialog").classList.add("d-none");
+  document.body.style.overflow = "";
+  
+  
 }
 
 function updateDialog() {
@@ -72,7 +78,6 @@ function prevImage() {
 document.addEventListener("keydown", (e) => {
   const dialog = document.getElementById("dialog");
 
- 
   if (!dialog.classList.contains("d-none")) {
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();
