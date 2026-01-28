@@ -1,3 +1,5 @@
+let currentIndex = 0;
+
 let images = [
   "img/photo1.svg",
   "img/photo2.svg",
@@ -15,8 +17,6 @@ let images = [
 
 let gallery = document.getElementById("gallery");
 
-
-
 function imageTemplate(src) {
   return `
     <img 
@@ -28,28 +28,57 @@ function imageTemplate(src) {
   `;
 }
 
-
 function loadImages() {
-  gallery.innerHTML = ""; 
+  gallery.innerHTML = "";
 
-  for (let i = 0; i < images.length; i++) {
-    gallery.innerHTML += imageTemplate(images[i]);
+  for (let pic = 0; pic < images.length; pic++) {
+    gallery.innerHTML += imageTemplate(images[pic]);
   }
 }
 
 loadImages();
 
-
 function openDialog(src) {
-  let dialog = document.getElementById("dialog");
-  let dialogImage = document.getElementById("dialogImage");
-
-  dialogImage.src = src;
-  dialog.classList.remove("d-none");
+  currentIndex = images.indexOf(src);
+  updateDialog();
+  document.getElementById("dialog").classList.remove("d-none");
 }
-
-
 
 function closeDialog() {
   document.getElementById("dialog").classList.add("d-none");
 }
+
+
+
+function updateDialog() {
+  let dialogImage = document.getElementById("dialogImage");
+  let imageName = document.getElementById("imageName");
+  let imageCounter = document.getElementById("imageCounter");
+
+  dialogImage.src = images[currentIndex];
+  imageName.textContent = images[currentIndex].split("/").pop();
+  imageCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+}
+
+
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateDialog();
+}
+
+function prevImage() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateDialog();
+}
+
+
+
+document.addEventListener("keydown", (e) => {
+  let dialog = document.getElementById("dialog");
+  if (dialog.classList.contains("d-none")) return;
+
+  if (e.key === "ArrowRight") nextImage();
+  if (e.key === "ArrowLeft") prevImage();
+  if (e.key === "Escape") closeDialog();
+});

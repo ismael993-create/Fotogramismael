@@ -1,53 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fotogram</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet" />
+
+  <link rel="icon" href="./img/favicon.png" type="image/png" />
+</head>
+
+<body>
+  <header>
+    <div class="header-content">
+      <img class="imgheader" src="./img/Fotogram_Logo.svg" alt="Fotogram Logo" />
+    </div>
+  </header>
+
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fotogram</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
-      rel="stylesheet"
-    />
-
-    <link rel="icon" href="./img/favicon.png" type="image/png" />
+    <h1>Your personal photo album</h1>
   </head>
-  <body>
-    <header>
-      <div class="header-content">
-        <img
-          class="imgheader"
-          src="./img/Fotogram_Logo.svg"
-          alt="Fotogram Logo"
-        />
+
+  <main>
+    <section id="gallery" class="gallery-container"></section>
+
+
+    <div id="dialog" class="dialog d-none" onclick="closeDialog()">
+      <div class="position_close">
+        <div class="dialog_box" onclick="event.stopPropagation()">
+
+
+          <div class="dialog_header">
+            <span id="imageName"></span>
+            <button class="close-btn" onclick="closeDialog()">✕</button>
+          </div>
+
+
+          <img id="dialogImage" />
+
+
+          <div class="dialog_footer">
+            <button class="nav-btn" onclick="prevImage()">
+              <img class="arrow-left" src="./img/Arrow-Right.svg" alt="Zurück">
+            </button>
+            <span id="imageCounter"></span>
+            <button class="nav-btn" onclick="nextImage()">
+              <img src="./img/Arrow-Right.svg" alt="Weiter">
+            </button>
+          </div>
+
+        </div>
       </div>
-    </header>
+    </div>
+  </main>
 
-    <head>
-      <h1>Your personal photo album</h1>
-    </head>
 
-    <main>
-      <section id="gallery" class="gallery-container"></section>
-    </main>
-   <div id="dialog" class="dialog d-none" onclick="closeDialog()">
-  <div class="dialog_box">
-    <img id="dialogImage" />
-  </div>
-</div>
+  <footer class="footer_end">
+    <div class="footer-content">
+      <img src="./img/Logo.svg" alt="Developer Logo" />
+      <img src="./img/© 2023 Developer Akademie GmbH.svg" alt="Developer Akademie" />
+    </div>
+  </footer>
 
-    <footer class="footer_end">
-      <div class="footer-content">
-        <img src="./img/Logo.svg" alt="Developer Logo" />
-        <img
-          src="./img/© 2023 Developer Akademie GmbH.svg"
-          alt="Developer Akademie"
-        />
-      </div>
-    </footer>
+  <script src="script.js"></script>
+</body>
 
-    <script src="script.js"></script>
-  </body>
 </html>
