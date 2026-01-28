@@ -23,7 +23,7 @@ function imageTemplate(src) {
       src="${src}" 
       class="thumbnail"
       onclick="openDialog('${src}')"
-      alt="Gallery image"
+      alt="Ausgewähltes Bild"
     >
   `;
 }

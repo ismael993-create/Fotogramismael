@@ -21,22 +21,22 @@
     </div>
   </header>
 
-  <head>
-    <h1>Your personal photo album</h1>
-  </head>
+
 
   <main>
+    <h1>Your personal photo album</h1>
     <section id="gallery" class="gallery-container"></section>
 
 
-    <div id="dialog" class="dialog d-none" onclick="closeDialog()">
+    <div id="dialog" class="dialog d-none" role="dialog" aria-modal="true" aria-labelledby="imageName"
+      onclick="closeDialog()">
       <div class="position_close">
         <div class="dialog_box" onclick="event.stopPropagation()">
 
 
           <div class="dialog_header">
             <span id="imageName"></span>
-            <button class="close-btn" onclick="closeDialog()">✕</button>
+            <button aria-label="Dialog Schließen" class="close-btn" onclick="closeDialog()">✕</button>
           </div>
 
 
@@ -44,11 +44,11 @@
 
 
           <div class="dialog_footer">
-            <button class="nav-btn" onclick="prevImage()">
+            <button class="nav-btn" onclick="prevImage()" aria-label="Vorheriges Bild">
               <img class="arrow-left" src="./img/Arrow-Right.svg" alt="Zurück">
             </button>
             <span id="imageCounter"></span>
-            <button class="nav-btn" onclick="nextImage()">
+            <button class="nav-btn" onclick="nextImage()" aria-label="Nächstes Bild">
               <img src="./img/Arrow-Right.svg" alt="Weiter">
             </button>
           </div>
