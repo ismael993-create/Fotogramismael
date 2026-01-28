@@ -89,3 +89,6 @@ document.addEventListener("keydown", (e) => {
     openDialog(images[currentIndex]);
   }
 });
+
+
+
