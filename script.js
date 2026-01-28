@@ -49,8 +49,6 @@ function closeDialog() {
   document.getElementById("dialog").classList.add("d-none");
 }
 
-
-
 function updateDialog() {
   let dialogImage = document.getElementById("dialogImage");
   let imageName = document.getElementById("imageName");
@@ -61,8 +59,6 @@ function updateDialog() {
   imageCounter.textContent = `${currentIndex + 1} / ${images.length}`;
 }
 
-
-
 function nextImage() {
   currentIndex = (currentIndex + 1) % images.length;
   updateDialog();
@@ -72,8 +68,6 @@ function prevImage() {
   currentIndex = (currentIndex - 1 + images.length) % images.length;
   updateDialog();
 }
-
-
 
 document.addEventListener("keydown", (e) => {
   const dialog = document.getElementById("dialog");
