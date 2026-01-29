@@ -1,4 +1,5 @@
 let currentIndex = 0;
+let lastFocusedThumbnail = null;
 
 let images = [
   "img/photo1.svg",
@@ -15,53 +16,90 @@ let images = [
   "img/photo12.svg",
 ];
 
-let gallery = document.getElementById("gallery");
+const gallery = document.getElementById("gallery");
 
 function imageTemplate(src) {
   return `
-    <img 
-      src="${src}" 
-      class="thumbnail"
-      alt="Ausgewähltes Bild"
-      tabindex="0"
-    >
+    <button class="thumbnail-btn" data-src="${src}">
+      <img
+        src="${src}"
+        class="thumbnail"
+        alt="Ausgewähltes Bild"
+      >
+    </button>
   `;
 }
 
 function loadImages() {
   gallery.innerHTML = "";
+  images.forEach((img) => {
+    gallery.innerHTML += imageTemplate(img);
+  });
 
-  for (let pic = 0; pic < images.length; pic++) {
-    gallery.innerHTML += imageTemplate(images[pic]);
-  }
+  document.querySelectorAll(".thumbnail-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      openDialog(btn.dataset.src);
+    });
+  });
 }
 
 loadImages();
 
 function openDialog(src) {
   currentIndex = images.indexOf(src);
+  lastFocusedThumbnail = document.activeElement;
+
   updateDialog();
-  document.getElementById("dialog").classList.remove("d-none");
+
+ let dialog = document.getElementById("dialog");
+  dialog.classList.remove("d-none");
   document.body.style.overflow = "hidden";
-  document.querySelector(".nav-btn").focus();
-  
+
+  trapFocus(dialog);
 }
 
 function closeDialog() {
-  document.getElementById("dialog").classList.add("d-none");
+ let dialog = document.getElementById("dialog");
+  dialog.classList.add("d-none");
   document.body.style.overflow = "";
-  
-  
+
+  if (dialog._removeTrap) dialog._removeTrap();
+  if (lastFocusedThumbnail) lastFocusedThumbnail.focus();
+}
+
+function trapFocus(dialog) {
+  let focusable = dialog.querySelectorAll("button");
+  let first = focusable[0];
+  let last = focusable[focusable.length - 1];
+
+  function handleTab(e) {
+    if (e.key !== "Tab") return;
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  dialog.addEventListener("keydown", handleTab);
+  first.focus();
+
+  dialog._removeTrap = () => {
+    dialog.removeEventListener("keydown", handleTab);
+  };
 }
 
 function updateDialog() {
-  let dialogImage = document.getElementById("dialogImage");
-  let imageName = document.getElementById("imageName");
-  let imageCounter = document.getElementById("imageCounter");
-
-  dialogImage.src = images[currentIndex];
-  imageName.textContent = images[currentIndex].split("/").pop();
-  imageCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+  document.getElementById("dialogImage").src = images[currentIndex];
+  document.getElementById("imageName").textContent = images[currentIndex]
+    .split("/")
+    .pop();
+  document.getElementById("imageCounter").textContent = `${
+    currentIndex + 1
+  } / ${images.length}`;
 }
 
 function nextImage() {
@@ -81,8 +119,6 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();
     if (e.key === "Escape") closeDialog();
+    return;
   }
 });
-
-
-

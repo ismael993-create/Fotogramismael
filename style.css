@@ -23,10 +23,10 @@ header {
 }
 
 .position_close {
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
 }
 
@@ -115,6 +115,13 @@ main {
 
 }
 
+.thumbnail-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
 
 .thumbnail {
     width: 150px;
@@ -154,6 +161,7 @@ main {
     border-top-left-radius: 100%;
     border-top-right-radius: 100%;
 }
+
 .dialog {
     position: fixed;
     inset: 0;
@@ -162,9 +170,9 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    
-   
-    
+
+
+
 }
 
 .dialog_header {
@@ -191,41 +199,45 @@ main {
     gap: 56px;
     color: white;
 }
-.nav-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 100%;
-  background-color: rgb(30,30,35);
-  border: none;
-  cursor: pointer;
-  overflow: hidden;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: rgb(30, 30, 35);
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-btn img {
-  width: 24px;    
-  height: 24px;
-  object-fit: contain;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
+
 .nav-btn:hover {
- 
-  color: #FF4500; 
-  background-color:rgb(56,36,40) ;
+
+    color: #FF4500;
+    background-color: rgb(56, 36, 40);
 }
+
 .arrow-left {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
+
 .pfeil {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 }
 
 
 .dialog_box {
-    position: relative;   
+    position: relative;
     width: 675px;
     height: 690px;
     background-color: #124658;
@@ -272,7 +284,7 @@ main {
     .dialog_box {
         width: 340px;
         height: 650px;
-        
+
     }
 
     .dialog_header {
@@ -290,10 +302,10 @@ main {
     }
 
 
-.close-btn {
-    display: flex;
-    justify-content: flex-end;
-}
+    .close-btn {
+        display: flex;
+        justify-content: flex-end;
+    }
 
 }
 
