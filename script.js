@@ -22,7 +22,6 @@ function imageTemplate(src) {
     <img 
       src="${src}" 
       class="thumbnail"
-      onclick="openDialog('${src}')"
       alt="Ausgewähltes Bild"
       tabindex="0"
     >
@@ -82,11 +81,6 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();
     if (e.key === "Escape") closeDialog();
-    return;
-  }
-
-  if (e.key === "Enter") {
-    openDialog(images[currentIndex]);
   }
 });
 
