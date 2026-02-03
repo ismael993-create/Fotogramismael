@@ -51,45 +51,20 @@ function openDialog(src) {
 
   updateDialog();
 
- let dialog = document.getElementById("dialog");
-  dialog.classList.remove("d-none");
-  document.body.style.overflow = "hidden";
+  let dialog = document.getElementById("dialog");
+  dialog.showModal(); 
+  document.body.style.overflow = "hidden"; 
 
-  trapFocus(dialog);
+
+  document.getElementById("dialogImage").focus();
 }
 
 function closeDialog() {
- let dialog = document.getElementById("dialog");
-  dialog.classList.add("d-none");
-  document.body.style.overflow = "";
+  let dialog = document.getElementById("dialog");
+  dialog.close(); 
+  document.body.style.overflow = ""; 
 
-  if (dialog._removeTrap) dialog._removeTrap();
   if (lastFocusedThumbnail) lastFocusedThumbnail.focus();
-}
-
-function trapFocus(dialog) {
-  let focusable = dialog.querySelectorAll("button");
-  let first = focusable[0];
-  let last = focusable[focusable.length - 1];
-
-  function handleTab(e) {
-    if (e.key !== "Tab") return;
-
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault();
-      last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault();
-      first.focus();
-    }
-  }
-
-  dialog.addEventListener("keydown", handleTab);
-  first.focus();
-
-  dialog._removeTrap = () => {
-    dialog.removeEventListener("keydown", handleTab);
-  };
 }
 
 function updateDialog() {
@@ -112,13 +87,35 @@ function prevImage() {
   updateDialog();
 }
 
-document.addEventListener("keydown", (e) => {
-  const dialog = document.getElementById("dialog");
+let dialog = document.getElementById("dialog");
 
-  if (!dialog.classList.contains("d-none")) {
+dialog.addEventListener("keydown", (e) => {
+  if (e.key !== "Tab") return;
+
+  const focusable = dialog.querySelectorAll(
+    'button:not([disabled])'
+  );
+
+  let first = focusable[0];
+ let last = focusable[focusable.length - 1];
+
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  }
+
+  if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  let dialog = document.getElementById("dialog");
+let
+  if (dialog.open) {
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();
     if (e.key === "Escape") closeDialog();
-    return;
   }
 });

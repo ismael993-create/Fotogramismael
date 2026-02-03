@@ -27,6 +27,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    overflow: hidden;
 
 }
 
@@ -162,20 +163,16 @@ main {
     border-top-right-radius: 100%;
 }
 
-.dialog {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    width: auto;    
-    height: auto;
-
-
-
+dialog {
+    background: transparent;
+    border: none;
+    padding: 0;
 }
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
+
 
 .dialog_header {
     position: absolute;
@@ -260,9 +257,6 @@ main {
     flex: 1;
 }
 
-.d-none {
-    display: none;
-}
 
 @media (max-width: 1050px) {
     .imgheader {
@@ -311,7 +305,7 @@ main {
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 520px) {
     #gallery {
         grid-template-columns: repeat(2, 120px);
         gap: 12px;
@@ -340,4 +334,37 @@ main {
     .imgheader {
         width: 168px;
     }
+
+    .dialog_box {
+        width: 90vw;
+        height: 620px;
+        padding: 0;
+        background-color: #124658;
+
+    }
+
+    #dialogImage {
+        width: 300px;
+        height: 500px;
+
+    }
+
+    .dialog_header {
+        top: 0px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .dialog_footer {
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 56px;
+        color: white;
+    }
+
 }
