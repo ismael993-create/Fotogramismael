@@ -52,17 +52,16 @@ function openDialog(src) {
   updateDialog();
 
   let dialog = document.getElementById("dialog");
-  dialog.showModal(); 
-  document.body.style.overflow = "hidden"; 
-
+  dialog.showModal();
+  document.body.style.overflow = "hidden";
 
   document.getElementById("dialogImage").focus();
 }
 
 function closeDialog() {
   let dialog = document.getElementById("dialog");
-  dialog.close(); 
-  document.body.style.overflow = ""; 
+  dialog.close();
+  document.body.style.overflow = "";
 
   if (lastFocusedThumbnail) lastFocusedThumbnail.focus();
 }
@@ -91,19 +90,13 @@ let dialog = document.getElementById("dialog");
 
 dialog.addEventListener("keydown", (e) => {
   if (e.key !== "Tab") return;
-
-  const focusable = dialog.querySelectorAll(
-    'button:not([disabled])'
-  );
-
+  const focusable = dialog.querySelectorAll("button:not([disabled])");
   let first = focusable[0];
- let last = focusable[focusable.length - 1];
-
+  let last = focusable[focusable.length - 1];
   if (e.shiftKey && document.activeElement === first) {
     e.preventDefault();
     last.focus();
   }
-
   if (!e.shiftKey && document.activeElement === last) {
     e.preventDefault();
     first.focus();
@@ -112,7 +105,7 @@ dialog.addEventListener("keydown", (e) => {
 
 document.addEventListener("keydown", (e) => {
   let dialog = document.getElementById("dialog");
-let
+
   if (dialog.open) {
     if (e.key === "ArrowRight") nextImage();
     if (e.key === "ArrowLeft") prevImage();

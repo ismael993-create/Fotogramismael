@@ -305,7 +305,7 @@ dialog::backdrop {
 
 }
 
-@media (max-width: 520px) {
+@media  (max-width: 520px) {
     #gallery {
         grid-template-columns: repeat(2, 120px);
         gap: 12px;
