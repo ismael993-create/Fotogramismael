@@ -1,5 +1,6 @@
 let currentIndex = 0;
 let lastFocusedThumbnail = null;
+let gallery = document.getElementById("gallery");
 
 let images = [
   "img/photo1.svg",
@@ -16,7 +17,7 @@ let images = [
   "img/photo12.svg",
 ];
 
-const gallery = document.getElementById("gallery");
+
 
 function imageTemplate(src) {
   return `
